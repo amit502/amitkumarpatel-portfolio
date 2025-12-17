@@ -126,19 +126,25 @@
           <ul class="social-list">
             <li class="social-item">
               <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-icon name="logo-github"></ion-icon>
               </a>
             </li>
 
             <li class="social-item">
               <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
+                <ion-icon name="logo-linkedin"></ion-icon>
               </a>
             </li>
 
             <li class="social-item">
               <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
+                <!-- <ion-icon src="assets/images/toptal.svg"></ion-icon> -->
+                <img
+                  src="assets/images/toptal-light.svg"
+                  class="custom-icon"
+                  width="20"
+                  height="20"
+                />
               </a>
             </li>
           </ul>
@@ -209,13 +215,42 @@
           </section>
 
           <!--
+          - Download CV
+          -->
+          <a
+            href="assets/images/CV___Amit_Kumar_Patel_FA25.pdf"
+            target="_blank"
+            class="download-btn-container"
+          >
+            <button class="download-btn"><span>Download CV</span></button>
+          </a>
+
+          <!--
           - service
         -->
 
           <section class="service">
-            <h3 class="h3 service-title">What i'm doing</h3>
+            <h3 class="h3 service-title">Highlights</h3>
 
             <ul class="service-list">
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/software-dev.png"
+                    alt="Web development icon"
+                    width="64"
+                  />
+                </div>
+
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Software Development</h4>
+
+                  <p class="service-item-text">
+                    Building robust and scalable backend and full-stack systems.
+                  </p>
+                </div>
+              </li>
+
               <li class="service-item">
                 <div class="service-icon-box">
                   <img
@@ -227,16 +262,23 @@
                 </div>
 
                 <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Web design</h4>
+                  <h4 class="h4 service-item-title">AI & ML Development</h4>
 
                   <p class="service-item-text">
-                    The most modern and high-quality design made at a
-                    professional level.
+                    Designing intelligent systems that analyze data and automate
+                    insights.
                   </p>
                 </div>
               </li>
 
               <li class="service-item">
+                <!-- <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-app.svg"
+                    alt="mobile app icon"
+                    width="40"
+                  />
+                </div> -->
                 <div class="service-icon-box">
                   <img
                     src="./assets/images/icon-dev.svg"
@@ -246,15 +288,23 @@
                 </div>
 
                 <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Web development</h4>
+                  <h4 class="h4 service-item-title">Web & Data Systems</h4>
 
                   <p class="service-item-text">
-                    High-quality development of sites at the professional level.
+                    Delivering web applications, dashboards, and data-driven
+                    solutions
                   </p>
                 </div>
               </li>
 
               <li class="service-item">
+                <!-- <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icon-photo.svg"
+                    alt="camera icon"
+                    width="40"
+                  />
+                </div> -->
                 <div class="service-icon-box">
                   <img
                     src="./assets/images/icon-app.svg"
@@ -264,30 +314,11 @@
                 </div>
 
                 <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Mobile apps</h4>
+                  <h4 class="h4 service-item-title">Mobile Apps</h4>
 
                   <p class="service-item-text">
-                    Professional development of applications for iOS and
-                    Android.
-                  </p>
-                </div>
-              </li>
-
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icon-photo.svg"
-                    alt="camera icon"
-                    width="40"
-                  />
-                </div>
-
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Photography</h4>
-
-                  <p class="service-item-text">
-                    I make high-quality photos of any category at a professional
-                    level.
+                    React Native apps, visualization tools, end-to-end mobile
+                    solutions
                   </p>
                 </div>
               </li>
@@ -298,7 +329,7 @@
           - testimonials
         -->
 
-          <section class="testimonials">
+          <!-- <section class="testimonials">
             <h3 class="h3 testimonials-title">Testimonials</h3>
 
             <ul class="testimonials-list has-scrollbar">
@@ -426,13 +457,13 @@
                 </div>
               </li>
             </ul>
-          </section>
+          </section> -->
 
           <!--
           - testimonials modal
         -->
 
-          <div class="modal-container" data-modal-container>
+          <!-- <div class="modal-container" data-modal-container>
             <div class="overlay" data-overlay></div>
 
             <section class="testimonials-modal">
@@ -470,13 +501,13 @@
                 </div>
               </div>
             </section>
-          </div>
+          </div> -->
 
           <!--
           - clients
         -->
 
-          <section class="clients">
+          <!-- <section class="clients">
             <h3 class="h3 clients-title">Clients</h3>
 
             <ul class="clients-list has-scrollbar">
@@ -534,7 +565,7 @@
                 </a>
               </li>
             </ul>
-          </section>
+          </section>-->
         </article>
 
         <!--
@@ -558,30 +589,36 @@
             <ol class="timeline-list">
               <li class="timeline-item">
                 <h4 class="h4 timeline-item-title">
-                  University school of the arts
+                  University of South Dakota
                 </h4>
 
-                <span>2007 — 2008</span>
+                <span
+                  >August 2026 — May 2026, Vermillion, South Dakota, USA</span
+                >
+                <!-- <span class="address">Vermillion, South Dakota, USA</span> -->
 
                 <p class="timeline-text">
-                  Nemo enims ipsam voluptatem, blanditiis praesentium voluptum
-                  delenit atque corrupti, quos dolores et quas molestias
-                  exceptur.
+                  MS in Computer Science - Artificial Intelligence
                 </p>
               </li>
 
               <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">New york academy of art</h4>
+                <h4 class="h4 timeline-item-title">
+                  IOE, Pulchowk Campus, Tribhuvan University
+                </h4>
 
-                <span>2006 — 2007</span>
+                <span
+                  >November 2014 — September 2018, Pulchowk, Lalitpur,
+                  Nepal</span
+                >
+                <!-- <span class="address">Pulchowk, Lalitpur, Nepal</span> -->
 
                 <p class="timeline-text">
-                  Ratione voluptatem sequi nesciunt, facere quisquams facere
-                  menda ossimus, omnis voluptas assumenda est omnis..
+                  Bachelor’s Degree in Computer Engineering
                 </p>
               </li>
 
-              <li class="timeline-item">
+              <!-- <li class="timeline-item">
                 <h4 class="h4 timeline-item-title">
                   High school of art and design
                 </h4>
@@ -593,7 +630,7 @@
                   voluptas mag odit aut fugit, sed consequuntur magni dolores
                   eos.
                 </p>
-              </li>
+              </li> -->
             </ol>
           </section>
 
@@ -608,9 +645,11 @@
 
             <ol class="timeline-list">
               <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Creative director</h4>
+                <h4 class="h4 timeline-item-title">
+                  Senior Software Engineer II
+                </h4>
 
-                <span>2015 — Present</span>
+                <span>Oct. 2023 – Aug. 2024</span>
 
                 <p class="timeline-text">
                   Nemo enim ipsam voluptatem blanditiis praesentium voluptum
