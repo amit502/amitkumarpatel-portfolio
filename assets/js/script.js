@@ -78,7 +78,9 @@ const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (
+      selectedValue === filterItems[i].dataset.category.toLowerCase()
+    ) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -100,6 +102,11 @@ for (let i = 0; i < filterBtn.length; i++) {
     lastClickedBtn = this;
   });
 }
+filterFunc("all");
+
+// NEW FILTER
+
+// NEW FILTER
 
 // contact form variables
 const form = document.querySelector("[data-form]");
@@ -124,6 +131,7 @@ const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
+  console.log(navigationLinks[i]);
   navigationLinks[i].addEventListener("click", function () {
     for (let i = 0; i < pages.length; i++) {
       if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {

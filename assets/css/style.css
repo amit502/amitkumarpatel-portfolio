@@ -560,6 +560,8 @@ main {
   font-weight: var(--fw-300);
   line-height: 1.6;
   font-style: italic;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .about-text p {
@@ -889,11 +891,12 @@ main {
   color: var(--vegas-gold);
   font-weight: var(--fw-400);
   line-height: 1.6;
+  display: inline;
 }
-/* .timeline-list span.address {
+.timeline-list span.address {
   font-size: var(--fs-7);
   font-style: italic;
-} */
+}
 .timeline-item:not(:last-child)::before {
   content: "";
   position: absolute;
