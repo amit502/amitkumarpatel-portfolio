@@ -125,6 +125,78 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+// ===== PROJECT MODAL =====
+
+const projectItems = document.querySelectorAll("[data-project-item]");
+const projectModalOverlay = document.querySelector("[data-project-modal-overlay]");
+const projectModalCloseBtn = document.querySelector("[data-project-modal-close]");
+const projectModalImg = document.querySelector("[data-project-modal-img]");
+const projectModalTitle = document.querySelector("[data-project-modal-title]");
+const projectModalCategory = document.querySelector("[data-project-modal-category]");
+const projectModalDesc = document.querySelector("[data-project-modal-desc]");
+const projectModalTech = document.querySelector("[data-project-modal-tech]");
+
+const openProjectModal = function (item) {
+  const title = item.dataset.projectTitle || "";
+  const category = item.dataset.projectCategory || "";
+  const desc = item.dataset.projectDesc || "";
+  const tech = item.dataset.projectTech || "";
+  const img = item.dataset.projectImg || "";
+
+  projectModalImg.src = img;
+  projectModalImg.alt = title;
+  projectModalTitle.textContent = title;
+  projectModalCategory.textContent = category;
+  projectModalDesc.textContent = desc;
+
+  projectModalTech.innerHTML = "";
+  tech.split(",").forEach(function (tag) {
+    const span = document.createElement("span");
+    span.className = "project-modal-tech-tag";
+    span.textContent = tag.trim();
+    projectModalTech.appendChild(span);
+  });
+
+  // Prevent layout shift caused by scrollbar disappearing
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.paddingRight = scrollbarWidth + "px";
+  document.body.style.overflow = "hidden";
+  projectModalOverlay.classList.add("active");
+};
+
+const closeProjectModal = function () {
+  projectModalOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+  document.body.style.paddingRight = "";
+};
+
+// open modal on project item click
+for (let i = 0; i < projectItems.length; i++) {
+  projectItems[i].addEventListener("click", function (e) {
+    e.preventDefault();
+    openProjectModal(this);
+  });
+}
+
+// close modal on close button click
+projectModalCloseBtn.addEventListener("click", closeProjectModal);
+
+// close modal on overlay click (outside modal card)
+projectModalOverlay.addEventListener("click", function (e) {
+  if (e.target === projectModalOverlay) {
+    closeProjectModal();
+  }
+});
+
+// close modal on Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && projectModalOverlay.classList.contains("active")) {
+    closeProjectModal();
+  }
+});
+
+// ===== END PROJECT MODAL =====
+
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
