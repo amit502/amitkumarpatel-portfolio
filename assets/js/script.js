@@ -75,13 +75,19 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
+  let staggerIndex = 0;
   for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
+    const matches =
+      selectedValue === "all" ||
+      selectedValue === filterItems[i].dataset.category.toLowerCase();
+
+    if (matches) {
+      filterItems[i].classList.remove("active");
+      // force reflow so animation retriggers when adding .active back
+      void filterItems[i].offsetWidth;
+      filterItems[i].style.setProperty("--stagger-delay", staggerIndex * 55 + "ms");
       filterItems[i].classList.add("active");
-    } else if (
-      selectedValue === filterItems[i].dataset.category.toLowerCase()
-    ) {
-      filterItems[i].classList.add("active");
+      staggerIndex++;
     } else {
       filterItems[i].classList.remove("active");
     }
@@ -197,22 +203,58 @@ document.addEventListener("keydown", function (e) {
 
 // ===== END PROJECT MODAL =====
 
-// page navigation variables
+// ===== SKILL BAR ANIMATION =====
+
+const skillFills = document.querySelectorAll(".skill-progress-fill");
+
+// Store each bar's target width from inline style, then reset to 0
+skillFills.forEach(function (fill) {
+  fill.dataset.targetWidth = fill.style.width || "0%";
+  fill.style.width = "0%";
+});
+
+const animateSkillBars = function () {
+  skillFills.forEach(function (fill, index) {
+    setTimeout(function () {
+      fill.style.width = fill.dataset.targetWidth;
+    }, index * 65 + 80);
+  });
+};
+
+const resetSkillBars = function () {
+  skillFills.forEach(function (fill) {
+    fill.style.transition = "none";
+    fill.style.width = "0%";
+    // re-enable transition after reset
+    setTimeout(function () {
+      fill.style.transition = "";
+    }, 20);
+  });
+};
+
+// ===== PAGE NAVIGATION =====
+
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
-  console.log(navigationLinks[i]);
   navigationLinks[i].addEventListener("click", function () {
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+    const targetPage = this.innerHTML.toLowerCase();
+
+    for (let j = 0; j < pages.length; j++) {
+      if (targetPage === pages[j].dataset.page) {
+        pages[j].classList.add("active");
+        navigationLinks[j].classList.add("active");
         window.scrollTo(0, 0);
+
+        // animate skill bars when resume tab opens
+        if (targetPage === "resume") {
+          resetSkillBars();
+          setTimeout(animateSkillBars, 60);
+        }
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        pages[j].classList.remove("active");
+        navigationLinks[j].classList.remove("active");
       }
     }
   });
